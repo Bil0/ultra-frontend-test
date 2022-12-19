@@ -1,0 +1,40 @@
+module.exports = {
+  globals: {
+    "ts-jest": {
+      tsconfig: "<rootDir>/src/tsconfig.spec.json",
+    },
+  },
+  preset: "jest-preset-angular",
+  roots: ["src"],
+  testEnvironmentOptions: {
+    url: "http://localhost/",
+  },
+  moduleNameMapper: {
+    "^app(.*)$": "<rootDir>/src/app$1",
+    "^environments/(.*)$": "<rootDir>/src/environments/$1",
+  },
+  testMatch: ["**/*.spec.ts"],
+  setupFilesAfterEnv: ["<rootDir>/src/app/testing/setupJest.ts"],
+  testResultsProcessor: "./node_modules/jest-junit-reporter",
+  reporters: ["default"],
+  coverageReporters: ["cobertura", "lcov"],
+  moduleFileExtensions: ["ts", "html", "js", "json", "mjs"],
+  transformIgnorePatterns: [`node_modules/(?!(@angular|@ngrx))`],
+  coveragePathIgnorePatterns: [
+    "main.ts",
+    "polyfills.ts",
+    ".module.ts",
+    ".interface.ts",
+    ".utils.ts",
+    "app/testing/*.ts",
+    "app/models/*.ts",
+    "app/constants/*",
+    "environments/*.ts",
+    ".routes.ts",
+    ".model.ts",
+    ".const.ts",
+    ".mock.ts",
+    ".enum.ts",
+    "index.ts",
+  ],
+};
