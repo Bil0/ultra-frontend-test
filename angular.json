@@ -27,6 +27,11 @@
               "src/favicon.ico",
               "src/assets",
               {
+                "glob": "*.json",
+                "input": "./src/app/testing/mocks/",
+                "output": "api/"
+              },
+              {
                 "glob": "svg-sprite-*.svg",
                 "input": "./node_modules/material-design-icons/sprites/svg-sprite/",
                 "output": "mat-icons/"

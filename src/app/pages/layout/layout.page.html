@@ -1,0 +1,18 @@
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <button mat-icon-button>
+      <h1>Marketplace</h1>
+    </button>
+  </mat-toolbar-row>
+  <mat-toolbar-row> {{ (wallet$ | async)?.balance}} </mat-toolbar-row>
+  <mat-toolbar-row class>
+    <div style="width: 90%"></div>
+    <button mat-icon-button>
+      <mat-icon svgIcon="ic_exit_to_app_24px"></mat-icon>
+      {{ basketTotal$ | async }}
+    </button>
+  </mat-toolbar-row>
+</mat-toolbar>
+<main>
+  <router-outlet></router-outlet>
+</main>

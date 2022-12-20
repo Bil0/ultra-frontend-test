@@ -1,0 +1,5 @@
+<app-product
+  *ngFor="let product of  homeProducts$ | async"
+  [product]="product"
+  (addProductToBasket)="onAddProductToBasket($event)"
+></app-product>
