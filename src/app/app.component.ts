@@ -11,18 +11,7 @@ export class AppComponent {
     private readonly matIconRegistry: MatIconRegistry,
     private readonly sanitizer: DomSanitizer
   ) {
-    [
-      'notification',
-      'action',
-      'alert',
-      'communication',
-      'device',
-      'file',
-      'image',
-      'social',
-      'toggle',
-      'navigation',
-    ].map((url) =>
+    ['action', 'communication'].map((url) =>
       matIconRegistry.addSvgIconSet(
         sanitizer.bypassSecurityTrustResourceUrl(
           `mat-icons/svg-sprite-${url}.svg`

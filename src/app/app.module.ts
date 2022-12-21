@@ -16,6 +16,7 @@ import { metaReducers } from './store/reducers';
 import { MarketplaceEffects } from './store/effects/marketplace.effects';
 import { ProductComponent } from './components/product/product.component';
 import { HttpClientModule } from '@angular/common/http';
+import { NgOptimizedImage } from '@angular/common';
 
 @NgModule({
   declarations: [AppComponent, LayoutPage, HomePage, ProductComponent],
@@ -24,6 +25,7 @@ import { HttpClientModule } from '@angular/common/http';
     AppRoutingModule,
     HttpClientModule,
     BrowserAnimationsModule,
+    NgOptimizedImage,
     AppMaterialModule,
     StoreModule.forRoot(
       { marketplace: marketplaceReducer },

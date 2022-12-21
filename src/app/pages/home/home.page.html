@@ -1,5 +1,7 @@
-<app-product
-  *ngFor="let product of  homeProducts$ | async"
-  [product]="product"
-  (addProductToBasket)="onAddProductToBasket($event)"
-></app-product>
+<div class="products">
+  <app-product
+    *ngFor="let product of  homeProducts$ | async"
+    [product]="product"
+    (addProductToBasket)="onAddProductToBasket($event)"
+  ></app-product>
+</div>

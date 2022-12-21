@@ -4,11 +4,12 @@ import { HomeProduct } from 'app/models/product.model';
 import { MarketplaceActions } from 'app/store/actions/marketplace.actions';
 import { selectHomeProducts } from 'app/store/selectors/marketplace.selectors';
 
-import { Observable, tap } from 'rxjs';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.page.html',
+  styleUrls: ['./home.page.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HomePage implements OnInit {
@@ -16,11 +17,7 @@ export class HomePage implements OnInit {
   constructor(private readonly store: Store) {}
 
   ngOnInit(): void {
-    this.homeProducts$ = this.store.select(selectHomeProducts).pipe(
-      tap((p) => {
-        console.log('prod', p);
-      })
-    );
+    this.homeProducts$ = this.store.select(selectHomeProducts);
   }
 
   onAddProductToBasket(productId: number) {

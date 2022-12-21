@@ -11,6 +11,7 @@ import { Wallet } from 'app/models/wallet.model';
 @Component({
   selector: 'app-layout',
   templateUrl: './layout.page.html',
+  styleUrls: ['./layout.page.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class LayoutPage implements OnInit {

@@ -1,22 +1,22 @@
-import { Dictionary } from '@ngrx/entity';
+import { EntityState, EntityAdapter, createEntityAdapter } from '@ngrx/entity';
 import { Action, createReducer, on } from '@ngrx/store';
 
-import { Product } from 'app/models/product.model';
+import { HomeProduct, Product } from 'app/models/product.model';
 import { Wallet } from 'app/models/wallet.model';
+import { Dictionary } from 'lodash';
 import { MarketplaceActions } from '../actions/marketplace.actions';
 
-export interface MarketplaceState {
-  readonly productIds: number[];
-  readonly products: Dictionary<Product>;
+export interface MarketplaceState extends EntityState<HomeProduct> {
   readonly wallet?: Wallet;
   readonly basket: number[];
 }
 
-export const initialState: MarketplaceState = {
-  productIds: [],
-  products: {},
+export const adapter: EntityAdapter<HomeProduct> =
+  createEntityAdapter<HomeProduct>();
+
+export const initialState: MarketplaceState = adapter.getInitialState({
   basket: [],
-};
+});
 
 export const marketplaceReducer = createReducer(
   initialState,
@@ -29,11 +29,12 @@ export const marketplaceReducer = createReducer(
   ),
   on(
     MarketplaceActions.loadProductsSucceeeded,
-    (state, { products, productIds }): MarketplaceState => ({
-      ...state,
-      productIds,
-      products,
-    })
+    (state, { products }): MarketplaceState => adapter.setAll(products, state)
+  ),
+  on(
+    MarketplaceActions.addToBasket,
+    (state, { productId }): MarketplaceState =>
+      adapter.updateOne({ id: productId, changes: { isInBasket: true } }, state)
   ),
   on(
     MarketplaceActions.addToBasket,
@@ -48,6 +49,14 @@ export const marketplaceReducer = createReducer(
       ...state,
       basket: [...state.basket.filter((id) => id !== productId)],
     })
+  ),
+  on(
+    MarketplaceActions.removeFromBasket,
+    (state, { productId }): MarketplaceState =>
+      adapter.updateOne(
+        { id: productId, changes: { isInBasket: false } },
+        state
+      )
   ),
   on(
     MarketplaceActions.resetState,

@@ -4,7 +4,6 @@ import { Product } from 'app/models/product.model';
 import { Wallet } from 'app/models/wallet.model';
 import { ProductService } from 'app/services/product.service';
 import { UserService } from 'app/services/user.service';
-import { groupBy, keyBy } from 'lodash';
 import { map, switchMap } from 'rxjs';
 import { MarketplaceActions } from '../actions/marketplace.actions';
 
@@ -16,8 +15,10 @@ export class MarketplaceEffects {
       switchMap(() => this.productService.loadAllProducts()),
       map((products: Product[]) =>
         MarketplaceActions.loadProductsSucceeeded({
-          products: keyBy(products, 'id'),
-          productIds: products.map((product) => product.id),
+          products: products.map((product) => ({
+            ...product,
+            isInBasket: false,
+          })),
         })
       )
     );

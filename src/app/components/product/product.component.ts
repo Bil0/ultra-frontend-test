@@ -3,9 +3,7 @@ import {
   Component,
   EventEmitter,
   Input,
-  OnChanges,
   Output,
-  SimpleChanges,
 } from '@angular/core';
 import { HomeProduct } from 'app/models/product.model';
 
@@ -13,15 +11,12 @@ import { HomeProduct } from 'app/models/product.model';
 @Component({
   selector: 'app-product',
   templateUrl: './product.component.html',
+  styleUrls: ['./product.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ProductComponent implements OnChanges {
+export class ProductComponent {
   @Input() product!: HomeProduct;
   @Output() readonly addProductToBasket = new EventEmitter<number>();
-
-  ngOnChanges(changes: SimpleChanges) {
-    console.log(changes);
-  }
   onAddProductToBasket(id: number) {
     this.addProductToBasket.emit(id);
   }
