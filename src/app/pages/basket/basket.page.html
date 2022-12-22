@@ -1,0 +1,38 @@
+<div class="basket" *ngIf="basket$ | async  as basket">
+  <mat-list role="list">
+    <mat-list-item *ngFor="let product of basket.products" class="item">
+      <img
+        matListItemAvatar
+        ngSrc="assets/image.jpg"
+        alt="product image"
+        width="50"
+        height="35"
+        priority
+      />
+      <div matListItemTitle>{{product.name}}</div>
+      <div matListItemLine class="detail">
+        <span>{{product.price | currency}}</span>
+        <div class="spacer"></div>
+        <button mat-icon-button (click)="removeProductFromBasket(product.id)">
+          <mat-icon svgIcon="ic_delete_24px"></mat-icon>
+        </button>
+      </div>
+    </mat-list-item>
+  </mat-list>
+
+  <span>Total: {{ basket.total | currency }}</span>
+  <div class="checkout">
+    <button
+      mat-button
+      color="primary"
+      [disabled]="(canCheckout$ | async) === false"
+    >
+      Checkout
+    </button>
+    <div>
+      <mat-error *ngIf="isInsufficientBalance$ | async"
+        >Balance is not sufficient</mat-error
+      >
+    </div>
+  </div>
+</div>

@@ -1,9 +1,8 @@
-import { EntityState, EntityAdapter, createEntityAdapter } from '@ngrx/entity';
+import { createEntityAdapter, EntityAdapter, EntityState } from '@ngrx/entity';
 import { Action, createReducer, on } from '@ngrx/store';
 
-import { HomeProduct, Product } from 'app/models/product.model';
+import { HomeProduct } from 'app/models/product.model';
 import { Wallet } from 'app/models/wallet.model';
-import { Dictionary } from 'lodash';
 import { MarketplaceActions } from '../actions/marketplace.actions';
 
 export interface MarketplaceState extends EntityState<HomeProduct> {

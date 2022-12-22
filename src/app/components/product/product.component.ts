@@ -7,7 +7,6 @@ import {
 } from '@angular/core';
 import { HomeProduct } from 'app/models/product.model';
 
-/** PageNotFoundComponent */
 @Component({
   selector: 'app-product',
   templateUrl: './product.component.html',

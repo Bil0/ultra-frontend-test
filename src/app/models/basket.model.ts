@@ -1,5 +1,6 @@
-import { Product } from './product.model';
+import { HomeProduct } from './product.model';
 
 export interface Basket {
-  products: Product[];
+  products: HomeProduct[];
+  total: number;
 }

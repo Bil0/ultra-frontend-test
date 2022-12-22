@@ -17,9 +17,16 @@ import { MarketplaceEffects } from './store/effects/marketplace.effects';
 import { ProductComponent } from './components/product/product.component';
 import { HttpClientModule } from '@angular/common/http';
 import { NgOptimizedImage } from '@angular/common';
+import { BasketPage } from './pages/basket/basket.page';
 
 @NgModule({
-  declarations: [AppComponent, LayoutPage, HomePage, ProductComponent],
+  declarations: [
+    AppComponent,
+    LayoutPage,
+    HomePage,
+    ProductComponent,
+    BasketPage,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,

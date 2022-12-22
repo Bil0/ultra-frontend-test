@@ -1,10 +1,9 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
-import { HomeProduct, Product } from 'app/models/product.model';
+import { HomeProduct } from 'app/models/product.model';
 
 import * as fromMarketplace from '../reducers/marketplace.reducer';
 
-const { selectIds, selectEntities, selectAll, selectTotal } =
-  fromMarketplace.adapter.getSelectors();
+const productsAdapter = fromMarketplace.adapter.getSelectors();
 
 export const selectMarketplaceState =
   createFeatureSelector<fromMarketplace.MarketplaceState>('marketplace');
@@ -12,6 +11,10 @@ export const selectMarketplaceState =
 export const selectWallet = createSelector(
   selectMarketplaceState,
   (state: fromMarketplace.MarketplaceState) => state.wallet
+);
+export const selectWalletBalance = createSelector(
+  selectWallet,
+  (wallet) => wallet?.balance
 );
 
 export const selectProductIdsFromBasket = createSelector(
@@ -21,7 +24,11 @@ export const selectProductIdsFromBasket = createSelector(
 
 export const selectHomeProducts = createSelector(
   selectMarketplaceState,
-  selectAll
+  productsAdapter.selectAll
+);
+export const selectEntities = createSelector(
+  selectMarketplaceState,
+  productsAdapter.selectEntities
 );
 
 export const selectBasket = createSelector(
@@ -29,7 +36,7 @@ export const selectBasket = createSelector(
   selectProductIdsFromBasket,
   (products, productIdsFromBasket) => {
     const basketProducts = productIdsFromBasket.map(
-      (id) => products[id] as Product
+      (id) => products[id] as HomeProduct
     );
 
     return {
@@ -39,7 +46,19 @@ export const selectBasket = createSelector(
   }
 );
 
+export const selectInsufficientBalance = createSelector(
+  selectBasket,
+  selectWalletBalance,
+  ({ total }, walletBalance = 0) => walletBalance < total
+);
+
 export const selectBasketTotalItems = createSelector(
   selectProductIdsFromBasket,
   (ids: number[]) => ids.length
+);
+
+export const selectCanCheckout = createSelector(
+  selectBasketTotalItems,
+  selectInsufficientBalance,
+  (totalItems, insufficientBalance) => totalItems > 0 && !insufficientBalance
 );

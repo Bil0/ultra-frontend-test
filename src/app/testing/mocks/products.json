@@ -3,13 +3,13 @@
     "id": 1,
     "name": "Product 1",
     "image": "image-1",
-    "price": 10
+    "price": 150
   },
   {
     "id": 2,
     "name": "Product 2",
     "image": "image-2",
-    "price": 12
+    "price": 92
   },
   {
     "id": 3,

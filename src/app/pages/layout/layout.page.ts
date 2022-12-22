@@ -4,6 +4,7 @@ import { Store } from '@ngrx/store';
 import {
   selectBasketTotalItems,
   selectWallet,
+  selectWalletBalance,
 } from 'app/store/selectors/marketplace.selectors';
 import { MarketplaceActions } from 'app/store/actions/marketplace.actions';
 import { Wallet } from 'app/models/wallet.model';
@@ -16,7 +17,7 @@ import { Wallet } from 'app/models/wallet.model';
 })
 export class LayoutPage implements OnInit {
   basketTotal$!: Observable<number>;
-  wallet$!: Observable<Wallet | undefined>;
+  walletBalance$!: Observable<number | undefined>;
   constructor(private readonly store: Store) {}
 
   ngOnInit(): void {
@@ -24,6 +25,6 @@ export class LayoutPage implements OnInit {
     this.store.dispatch(MarketplaceActions.loadProducts());
 
     this.basketTotal$ = this.store.select(selectBasketTotalItems);
-    this.wallet$ = this.store.select(selectWallet);
+    this.walletBalance$ = this.store.select(selectWalletBalance);
   }
 }

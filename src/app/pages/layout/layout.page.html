@@ -3,9 +3,9 @@
   <span class="spacer"></span>
   <div>
     <mat-icon svgIcon="ic_account_balance_wallet_24px"></mat-icon>
-    {{ (wallet$ | async)?.balance | currency }}
+    {{ walletBalance$ | async | currency }}
   </div>
-  <button mat-icon-button>
+  <button mat-icon-button [routerLink]="'/basket'">
     <mat-icon svgIcon="ic_shopping_cart_24px"></mat-icon>: {{ basketTotal$ |
     async }}
   </button>
