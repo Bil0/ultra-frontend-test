@@ -1,7 +1,8 @@
 import { createActionGroup, emptyProps, props } from '@ngrx/store';
+import { Basket } from 'app/models/basket.model';
 import { HomeProduct } from 'app/models/product.model';
+import { User } from 'app/models/user.model';
 import { Wallet } from 'app/models/wallet.model';
-import { Update } from '@ngrx/entity';
 
 export const MarketplaceActions = createActionGroup({
   source: 'Marketplace',
@@ -14,6 +15,8 @@ export const MarketplaceActions = createActionGroup({
     'Load Product Error': props<{ error: unknown }>(),
     'Add To Basket': props<{ productId: number }>(),
     'Remove from Basket': props<{ productId: number }>(),
+    'Pay Basket': props<{ user: User }>(),
+    'Payment successful': props<{ basket: Basket }>(),
     'Reset State': emptyProps(),
   },
 });

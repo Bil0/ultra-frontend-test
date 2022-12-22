@@ -1,13 +1,11 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
 import { Store } from '@ngrx/store';
+import { MarketplaceActions } from 'app/store/actions/marketplace.actions';
 import {
   selectBasketTotalItems,
-  selectWallet,
   selectWalletBalance,
 } from 'app/store/selectors/marketplace.selectors';
-import { MarketplaceActions } from 'app/store/actions/marketplace.actions';
-import { Wallet } from 'app/models/wallet.model';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-layout',

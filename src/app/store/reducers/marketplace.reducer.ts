@@ -62,6 +62,20 @@ export const marketplaceReducer = createReducer(
     (): MarketplaceState => ({
       ...initialState,
     })
+  ),
+  on(
+    MarketplaceActions.paymentSuccessful,
+    (state, { basket }): MarketplaceState => ({
+      ...adapter.removeMany(
+        basket.products.map((product) => product.id),
+        state
+      ),
+      basket: [],
+      wallet: {
+        ...(state.wallet as Wallet),
+        balance: (state.wallet as Wallet).balance - basket.total,
+      },
+    })
   )
 );
 

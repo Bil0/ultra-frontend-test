@@ -1,23 +1,26 @@
-import { NgModule, isDevMode } from '@angular/core';
+import { isDevMode, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { EffectsModule } from '@ngrx/effects';
+import { StoreModule } from '@ngrx/store';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { AppMaterialModule } from './app-material.module';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { AppMaterialModule } from './app-material.module';
-import { StoreModule } from '@ngrx/store';
-import { EffectsModule } from '@ngrx/effects';
-import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
+import { NgOptimizedImage } from '@angular/common';
+import { HttpClientModule } from '@angular/common/http';
+import { ReactiveFormsModule } from '@angular/forms';
+import { ProductComponent } from './components/product/product.component';
+import { UserCheckoutFormComponent } from './components/user-checkout-form/user-checkout-form.component';
+import { BasketPage } from './pages/basket/basket.page';
+import { CheckoutPage } from './pages/checkout/checkout.page';
 import { HomePage } from './pages/home/home.page';
 import { LayoutPage } from './pages/layout/layout.page';
-import { marketplaceReducer } from './store/reducers/marketplace.reducer';
-import { metaReducers } from './store/reducers';
 import { MarketplaceEffects } from './store/effects/marketplace.effects';
-import { ProductComponent } from './components/product/product.component';
-import { HttpClientModule } from '@angular/common/http';
-import { NgOptimizedImage } from '@angular/common';
-import { BasketPage } from './pages/basket/basket.page';
+import { metaReducers } from './store/reducers';
+import { marketplaceReducer } from './store/reducers/marketplace.reducer';
 
 @NgModule({
   declarations: [
@@ -26,6 +29,8 @@ import { BasketPage } from './pages/basket/basket.page';
     HomePage,
     ProductComponent,
     BasketPage,
+    CheckoutPage,
+    UserCheckoutFormComponent,
   ],
   imports: [
     BrowserModule,
@@ -34,6 +39,7 @@ import { BasketPage } from './pages/basket/basket.page';
     BrowserAnimationsModule,
     NgOptimizedImage,
     AppMaterialModule,
+    ReactiveFormsModule,
     StoreModule.forRoot(
       { marketplace: marketplaceReducer },
       {

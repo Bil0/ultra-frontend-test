@@ -1,0 +1,14 @@
+<ng-container *ngIf="(totalPrice$ | async) as totalPrice; else payedTemplate">
+  <app-user-checkout-form
+    [totalPrice]="totalPrice"
+    (pay)="onPay($event)"
+  ></app-user-checkout-form>
+</ng-container>
+<ng-template #payedTemplate>
+  <div class="payed">
+    <h1>Thank you for your purchase</h1>
+    <button mat-raised-button color="primary" [routerLink]="'/'">
+      Buy more
+    </button>
+  </div>
+</ng-template>

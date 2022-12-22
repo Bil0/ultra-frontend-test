@@ -23,7 +23,8 @@
   <span>Total: {{ basket.total | currency }}</span>
   <div class="checkout">
     <button
-      mat-button
+      mat-raised-button
+      [routerLink]="'/checkout'"
       color="primary"
       [disabled]="(canCheckout$ | async) === false"
     >
