@@ -1,0 +1,30 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Marketplace Selectors Should select Entities 1`] = `Object {}`;
+
+exports[`Marketplace Selectors Should select HomeProducts 1`] = `Array []`;
+
+exports[`Marketplace Selectors Should select MarketplaceState 1`] = `
+Object {
+  "basket": Array [],
+  "entities": Object {},
+  "ids": Array [],
+  "wallet": Object {
+    "balance": 100,
+    "id": 1,
+    "userId": 1,
+  },
+}
+`;
+
+exports[`Marketplace Selectors Should select ProductIdsFromBasket 1`] = `Array []`;
+
+exports[`Marketplace Selectors Should select WalletBalance 1`] = `undefined`;
+
+exports[`Marketplace Selectors Should select wallet 1`] = `
+Object {
+  "balance": 100,
+  "id": 1,
+  "userId": 1,
+}
+`;

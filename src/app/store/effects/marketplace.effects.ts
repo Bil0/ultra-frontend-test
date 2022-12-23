@@ -15,13 +15,15 @@ export class MarketplaceEffects {
     return this.actions$.pipe(
       ofType(MarketplaceActions.loadProducts),
       switchMap(() => this.productService.loadAllProducts()),
-      map((products: Product[]) =>
-        MarketplaceActions.loadProductsSucceeeded({
-          products: products.map(product => ({
-            ...product,
-            isInBasket: false,
-          })),
-        }),
+      map(
+        (products: Product[]) =>
+          MarketplaceActions.loadProductsSucceeeded({
+            products: products.map(product => ({
+              ...product,
+              isInBasket: false,
+            })),
+          }),
+        //TODO handle catchError
       ),
     );
   });
@@ -31,6 +33,7 @@ export class MarketplaceEffects {
       ofType(MarketplaceActions.loadWallet),
       switchMap(() => this.userService.getMyWallet()),
       map((wallet: Wallet) => MarketplaceActions.loadWalletSucceeded({ wallet })),
+      //TODO handle catchError
     );
   });
 
@@ -40,6 +43,7 @@ export class MarketplaceEffects {
       concatLatestFrom(() => this.store.select(selectBasket)),
       switchMap(([{ user }, basket]) => this.userService.payBasket(user, basket).pipe(map(() => basket))),
       map(basket => MarketplaceActions.paymentSuccessful({ basket })),
+      //TODO handle catchError
     );
   });
 

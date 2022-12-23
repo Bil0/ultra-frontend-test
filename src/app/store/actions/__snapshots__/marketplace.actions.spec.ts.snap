@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Marketplace Actions Should create load wallet action 1`] = `
+Object {
+  "type": "[Marketplace] Load Wallet",
+}
+`;
