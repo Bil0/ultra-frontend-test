@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Basket } from 'app/models/basket.model';
 import { User } from 'app/models/user.model';
 import { Wallet } from 'app/models/wallet.model';
-import { Observable, of } from 'rxjs';
+import { map, Observable, of } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
 export class UserService {
@@ -16,6 +16,6 @@ export class UserService {
   }
 
   payBasket(user: User, basket: Basket): Observable<boolean> {
-    return of(true);
+    return of({ user, basket }).pipe(map(() => true));
   }
 }

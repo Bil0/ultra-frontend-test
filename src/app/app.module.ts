@@ -23,15 +23,7 @@ import { metaReducers } from './store/reducers';
 import { marketplaceReducer } from './store/reducers/marketplace.reducer';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    LayoutPage,
-    HomePage,
-    ProductComponent,
-    BasketPage,
-    CheckoutPage,
-    UserCheckoutFormComponent,
-  ],
+  declarations: [AppComponent, LayoutPage, HomePage, ProductComponent, BasketPage, CheckoutPage, UserCheckoutFormComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -52,7 +44,7 @@ import { marketplaceReducer } from './store/reducers/marketplace.reducer';
           strictStateImmutability: true,
           strictStateSerializability: true,
         },
-      }
+      },
     ),
     EffectsModule.forRoot([MarketplaceEffects]),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),

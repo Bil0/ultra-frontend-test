@@ -6,8 +6,8 @@
     {{ walletBalance$ | async | currency }}
   </div>
   <button mat-icon-button [routerLink]="'/basket'">
-    <mat-icon svgIcon="ic_shopping_cart_24px"></mat-icon>: {{ basketTotal$ |
-    async }}
+    <mat-icon svgIcon="ic_shopping_cart_24px"></mat-icon>:
+    {{ basketTotal$ | async }}
   </button>
 </mat-toolbar>
 <main>

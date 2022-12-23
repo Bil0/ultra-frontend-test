@@ -38,9 +38,7 @@ const routes: Routes = [
 
             return inject(Store)
               .select(selectCanCheckout)
-              .pipe(
-                map((canCheckout) => canCheckout || router.createUrlTree(['/']))
-              );
+              .pipe(map(canCheckout => canCheckout || router.createUrlTree(['/'])));
           },
         ],
       },

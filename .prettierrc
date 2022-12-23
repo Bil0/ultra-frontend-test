@@ -1,0 +1,16 @@
+{
+  "singleQuote": true,
+  "bracketSpacing": true,
+  "printWidth": 160,
+  "trailingComma": "all",
+  "arrowParens": "avoid",
+  "endOfLine": "auto",
+  "overrides": [
+    {
+      "files": "*.{component,page}.html",
+      "options": {
+        "parser": "angular"
+      }
+    }
+  ]
+}

@@ -2,12 +2,7 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Basket } from 'app/models/basket.model';
 import { MarketplaceActions } from 'app/store/actions/marketplace.actions';
-import { MarketplaceState } from 'app/store/reducers/marketplace.reducer';
-import {
-  selectBasket,
-  selectCanCheckout,
-  selectInsufficientBalance,
-} from 'app/store/selectors/marketplace.selectors';
+import { selectBasket, selectCanCheckout, selectInsufficientBalance } from 'app/store/selectors/marketplace.selectors';
 
 import { Observable } from 'rxjs';
 
@@ -21,7 +16,7 @@ export class BasketPage implements OnInit {
   basket$!: Observable<Basket>;
   isInsufficientBalance$!: Observable<boolean>;
   canCheckout$!: Observable<boolean>;
-  constructor(private readonly store: Store<MarketplaceState>) {}
+  constructor(private readonly store: Store) {}
 
   ngOnInit(): void {
     this.basket$ = this.store.select(selectBasket);

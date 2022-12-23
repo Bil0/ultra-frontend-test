@@ -3,25 +3,11 @@
     <mat-card-title>{{ product.name }}</mat-card-title>
     <mat-card-subtitle>{{ product.price | currency }}</mat-card-subtitle>
   </mat-card-header>
-  <img
-    mat-card-image
-    ngSrc="assets/image.jpg"
-    alt="product image"
-    width="150"
-    height="100"
-    priority
-  />
+  <img mat-card-image ngSrc="assets/image.jpg" alt="product image" width="150" height="100" priority />
   <mat-card-content>
     <p></p>
   </mat-card-content>
   <mat-card-actions>
-    <button
-      mat-raised-button
-      color="primary"
-      [disabled]="product.isInBasket"
-      (click)="onAddProductToBasket(product.id)"
-    >
-      Add to basket
-    </button>
+    <button mat-raised-button color="primary" [disabled]="product.isInBasket" (click)="onAddProductToBasket(product.id)">Add to basket</button>
   </mat-card-actions>
 </mat-card>

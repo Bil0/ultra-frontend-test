@@ -7,6 +7,4 @@ export interface AppState {
   readonly marketplace: fromSession.MarketplaceState;
 }
 
-export const metaReducers: MetaReducer<AppState>[] = !environment.production
-  ? []
-  : [];
+export const metaReducers: MetaReducer<AppState>[] = !environment.production ? [] : [];

@@ -7,15 +7,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatListModule } from '@angular/material/list';
 import { MatToolbarModule } from '@angular/material/toolbar';
 
-const SHARE_MATERIAL_MODULE = [
-  MatButtonModule,
-  MatCardModule,
-  MatIconModule,
-  MatInputModule,
-  MatFormFieldModule,
-  MatToolbarModule,
-  MatListModule,
-];
+const SHARE_MATERIAL_MODULE = [MatButtonModule, MatCardModule, MatIconModule, MatInputModule, MatFormFieldModule, MatToolbarModule, MatListModule];
 
 @NgModule({
   imports: [SHARE_MATERIAL_MODULE],

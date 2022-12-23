@@ -1,0 +1,74 @@
+{
+  "root": true,
+  "ignorePatterns": ["projects/**/*", "dist", "coverage"],
+  "env": {
+    "browser": true,
+    "jest": true
+  },
+  "overrides": [
+    {
+      "files": ["*.ts"],
+      "parserOptions": {
+        "project": ["tsconfig.json"],
+        "createDefaultProgram": true
+      },
+      "extends": [
+        "plugin:@angular-eslint/recommended",
+        "plugin:@angular-eslint/template/process-inline-templates",
+        "plugin:prettier/recommended",
+        "eslint:recommended",
+        "plugin:@ngrx/strict-requiring-type-checking"
+      ],
+      "rules": {
+        "@angular-eslint/component-class-suffix": [
+          "error",
+          {
+            "suffixes": ["Page", "Component"]
+          }
+        ],
+        "@typescript-eslint/member-ordering": 0,
+        "@typescript-eslint/naming-convention": 0,
+        "@angular-eslint/no-queries-metadata-property": "error",
+        "@angular-eslint/prefer-output-readonly": "error",
+        "no-cond-assign": "error",
+        "no-template-curly-in-string": "error",
+        "padding-line-between-statements": [
+          "error",
+          {
+            "blankLine": "always",
+            "prev": "*",
+            "next": "return"
+          }
+        ],
+        "@typescript-eslint/explicit-module-boundary-types": "off",
+        "@typescript-eslint/no-explicit-any": "off",
+        "@typescript-eslint/switch-exhaustiveness-check": "error",
+        "@angular-eslint/directive-class-suffix": "off",
+        "@typescript-eslint/no-unused-vars": [
+          "error",
+          {
+            "ignoreRestSiblings": true
+          }
+        ]
+      }
+    },
+    {
+      "files": ["*.html"],
+      "extends": ["plugin:@angular-eslint/template/recommended"],
+      "rules": {}
+    },
+    {
+      "files": ["*.html"],
+      "excludedFiles": ["*inline-template-*.component.html"],
+      "extends": ["plugin:prettier/recommended"],
+      "rules": {
+        "prettier/prettier": [
+          "error",
+          {
+            "parser": "angular"
+          }
+        ]
+      }
+    }
+  ]
+}
